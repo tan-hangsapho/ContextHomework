@@ -43,7 +43,7 @@ const SearchInput = () => {
           />
         </div>
       </div>
-      {findUser.length > 0 ? (
+      {filteredData.length > 0 ? (
         <div className="flex flex-wrap ml-20 gap-6 mt-5">
           <CardList filterUser={filteredData}></CardList>
         </div>

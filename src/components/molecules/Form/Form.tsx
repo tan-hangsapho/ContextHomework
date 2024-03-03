@@ -40,12 +40,10 @@ const Form = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     validateForm(name, value);
-    setUserdata((prevUser) => {
-      return {
-        ...prevUser,
-        [name]: value,
-      };
-    });
+    setUserdata((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -53,12 +51,10 @@ const Form = () => {
     validateForm(e.target.name, file);
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setUserdata((prevUser) => {
-        return {
-          ...prevUser,
-          profile: imageUrl,
-        };
-      });
+      setUserdata((prevUser) => ({
+        ...prevUser,
+        profile: imageUrl,
+      }));
     }
   };
 
@@ -76,14 +72,14 @@ const Form = () => {
 
       if (selectUser && FindUser) {
         // Update existing user
-        updateUser(FindUser.id, user);
+        updateUser(FindUser.id, Userdata);
       } else {
         // Add new user
         const generatedId = handleId();
         const newUser = { ...Userdata, id: generatedId };
         setuserInfo((preUser) => {
           const newAllUsers = [...preUser, newUser];
-          setLocalStorage("Userdata", newAllUsers);
+          setLocalStorage("users", newAllUsers);
           return newAllUsers;
         });
         setUserdata({

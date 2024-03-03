@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <MyContextProvider>
-        <div className="mb-20">
+        <div>
           <SearchInput></SearchInput>
           <Modal>
             <Form></Form>
